@@ -1,0 +1,653 @@
+:root
+{
+--mxs-gray: #eeeeee;
+--mxs-orange: #ff6f0f;
+--mxs-tablealt: #f4f4f4;
+--mxs-darkblue: #024cA8;
+--mxs-blue: #0776a0;
+--mxs-yellow: #ffa800;
+--mxs-lightgray: #bbbbbb;
+--mxs-cyan: #97c9dc;
+--mxs-green: #007633;
+--mxs-darkgray: #4d4d4d;
+--mxs-yellowgreen: #37DA7E;
+--mxs-red: #FF3500;
+--mxs-inputalertbg: rgba(255,35,0,0.1);
+
+--mxs-title: #024cA8;
+--mxs-title-alt: #ff6f0f;
+
+--mxs-selected:  #0776a0;
+--mxs-selected-bg: #0776a010;
+
+--mxs-unselected: #bbbbbb;
+
+--mxs-switch-on: var(--mxs-blue);
+--mxs-switch-off: rgba(64,128,255,0.1);
+--mxs-switch-disabled: rgba(50,50,50,1);
+--mxs-switch-blocked: rgba(255,111,0,0.8);
+--mxs-switch-alert: rgba(255,35,0,0.8);
+
+--mxs-bg-rgba-prefix: 238, 242, 244;
+
+
+}
+
+input:-internal-autofill-selected
+{
+	background-color: red;
+}
+
+
+body
+{
+	background-image: url('/css/core/fennec_logo.svg');	
+	background-color:  rgba(var(--mxs-bg-rgba-prefix),1);
+   color: black;
+
+}
+
+
+
+body.login
+{
+	background-color:  rgba(var(--mxs-bg-rgba-prefix),1);
+}
+
+
+.pager
+{
+	color: var(--mxs-blue);
+}
+.blanker.bggray,
+.ui-widget-overlay 
+{
+	background-color: #555;
+	opacity: 0.95;
+}
+
+#blanker_text
+{
+	color: rgba(0,0,0,0.7);
+}
+
+.bl_infobox
+{
+	background-color: rgba(var(--mxs-bg-rgba-prefix),0.9); 
+	border: 1px solid rgba(0,0,0,1);
+}
+
+.switcher__input:checked + .switcher__label {
+    color: #000;
+}
+
+.switcher__input:checked + .switcher__label:before {
+     background-color: var(--mxs-blue);   
+}
+
+.switcher__input:checked + .switcher__label:after {
+    background-color: var(--mxs-yellowgreen);    
+}
+
+.switcher__input:checked + .switcher__label:active:after {
+    transform: translateX(12px);
+}
+
+
+.switcher__label {
+ 
+    color: #ccc;
+
+}
+
+.switcher__label:before {
+ 
+    background-color: #e5e5e5;
+
+}
+
+.switcher__label:after {
+ 
+    background-color: #fff;
+ 
+}
+
+
+
+
+
+
+/* Main */
+
+div.t_navy_main
+{
+
+   background-color: rgba(var(--mxs-bg-rgba-prefix),0.28);
+   color: #000;
+
+	
+}
+
+
+div.t_main
+{
+   border-color: rgba(100,100,100,0.3);
+	background-color: rgba(var(--mxs-bg-rgba-prefix),0.72);
+}
+
+
+
+
+div.t_navy_main p.item, 
+div.t_navy_main p.subitem, 
+div.t_navy_main p.title, 
+div.t_navy_main p.item a, 
+div.t_navy_main p.subitem a, 
+div.t_navy_main p.title a,
+
+div.hidden_menu p.item, 
+div.hidden_menu p.subitem, 
+div.hidden_menu p.title, 
+div.hidden_menu p.item a, 
+div.hidden_menu p.subitem a, 
+div.hidden_menu p.title a
+{
+	color: inherit;
+}
+
+div.t_navy_main p.item, 
+div.t_navy_main p.subitem, 
+div.t_navy_main p.title, 
+
+div.hidden_menu p.item, 
+div.hidden_menu p.subitem 
+{
+	background-color: rgba(var(--mxs-bg-rgba-prefix).5);
+	border-bottom: 1px solid rgba(100,100,100,0.4);
+}
+div.breadcrumbs a, div.breadcrumbs,
+div.t_navy_main p.title
+{
+	color: white;
+	font-weight: 400;
+	
+	
+}
+
+div.breadcrumbs,
+div.t_navy_main p.title
+{
+	/* background-color: rgba(var(--mxs-bg-rgba-prefix),0.5); */
+	border-bottom: 1px solid rgba(100,100,100,0.1);
+
+	
+}
+
+div.t_navy_main p.title
+{
+
+	
+}
+div.header,
+div.breadcrumbs,
+div.t_navy_main p.title,
+table.datatable th,
+.ui-widget-header
+{
+	color: white;	
+	background-color: rgba(02,76,168,0.6);
+}
+
+
+div.t_navy_main p.title 
+{
+
+	height: 24px;
+	padding-bottom: 2;
+	padding-top: 3;
+	
+}
+
+div.t_navy_main p.item.selected, 
+div.t_navy_main p.subitem.selected, 
+div.t_navy_main p.item.selected a, 
+div.t_navy_main p.subitem.selected a,
+
+div.hidden_menu p.item.selected, 
+div.hidden_menu p.subitem.selected, 
+div.hidden_menu p.item.selected a, 
+div.hidden_menu p.subitem.selected a
+{
+	color: var(--mxs-darkblue);
+}
+
+div.t_navy_main p:hover, div.t_navy_main p a:hover,
+div.hidden_menu p:hover, div.hidden_menu p a:hover
+{
+	color: var(--mxs-blue);
+}
+
+/* general style sheet */
+
+
+.widget,
+.widget table
+{
+	color: black;
+}
+
+table.eventlist div.widget,
+div.widget, table.widget,
+div.widget
+{
+	 background-color: rgba(252,252,252,0.9);
+}
+
+table.datatable tr.alt td
+{
+	background-color: var(--mxs-tablealt);
+}
+
+div.crm_entity_field_title, 
+div.crm_entity_field_value, p, table.datatable td, input, select, textarea, div.widget p, div.widget pre,
+div.crm_entity_field_value a,
+div.crm_entity_field_input,
+div.text
+
+{ 
+	color: rgba(0,0,0,1);
+	font-weight: 300;
+}
+
+
+h1, table.h1,
+h2, table.h2
+{
+	color: var(--mxs-darkblue);
+	font-weight: 300;
+}
+
+
+table.datatable
+{
+	border-bottom: 1px double rgba(0,0,0,1);
+}
+
+table.datatable th
+{
+	border-bottom: 1px double rgba(0,0,0,0.5);
+}
+
+
+.datatable th.colspan
+{
+	border-left: 2px solid #eef2f4;
+	border-right: 2px solid #eef2f4;
+}
+
+table.datatable td
+{
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+table.datatable.sel tr:hover td,
+table.datatable.sel tr:hover td a,
+table.datatable.selm tr.ss:hover td,
+table.datatable.selm tr.ss:hover td a,
+table.datatable.selm tbody:hover tr td,
+table.datatable.selm tbody:hover tr td a
+{
+	background-color: rgba(0,0,254,0.1);
+}
+
+table.datatable .selected {
+	background-color: rgba(255,111,16,0.2);
+	
+}
+
+div.crm_entity_field_block input, div.crm_entity_field_block select, div.crm_entity_field_block textarea
+{
+	
+	border-bottom: 1px solid rgba(100,100,100,1);
+}
+
+/* panel_full_normal */
+
+.full-width-input
+{
+	background-color: red;
+}
+
+div.crm_entity_field_block input:focus,
+div.crm_entity_field_block select:focus,
+div.crm_entity_field_block textarea:focus,
+div.crm_entity_field_block input:focus.changed,
+div.crm_entity_field_block select:focus.changed,
+div.crm_entity_field_block textarea:focus.changed
+{
+	border-bottom: 1px solid var(--mxs-green);
+}
+
+div.crm_entity_field_block input:disabled,div.crm_entity_field_block select:disabled,div.crm_entity_field_block textarea:disabled
+{	
+	border-bottom: 1px double var(--mxs-gray);	
+}
+
+
+div.alert, p.alert
+{
+	background-color: var(--mxs-red);
+    color: white;
+}
+
+div.hidden_menu
+{
+	background-color: rgba(var(--mxs-bg-rgba-prefix),1);
+	color: black;	
+}
+
+div.contextMenu {
+    background-color: rgba(var(--mxs-bg-rgba-prefix),1);
+    border-color: var(--mxs-blue);
+}
+
+div.header_user
+{
+	color: var(--mxs-orange);
+}
+
+
+
+div.chevron span.chevron
+{
+	color: var(--mxs-blue);
+}
+
+div.chevron span.chevron:hover
+{
+	color: FFA800;
+}
+
+
+div.login
+{
+	color: var(--mxs-darkblue);
+	padding: 0px;
+    background-color: rgba(var(--mxs-bg-rgba-prefix),0.65);
+    border-radius: 5px;
+}
+
+div.login h2
+{
+	color: var(--mxs-darkblue);
+}
+
+
+div.crm_entity_field_block input.changed, 
+div.crm_entity_field_block select.changed, 
+div.crm_entity_field_block textarea.changed
+{
+	border-bottom-color: rgba(255,111,16,0.6);
+}
+
+div.crm_entity_field_block input.saved, 
+div.crm_entity_field_block select.saved, 
+div.crm_entity_field_block textarea.saved
+{
+	border-bottom-color: var(--mxs-green);
+}
+
+div.crm_entity_field_block input.alert, 
+div.crm_entity_field_block select.alert, 
+div.crm_entity_field_block textarea.alert
+{
+	border-bottom-color: var(--mxs-red);
+	background-color: var(--mxs-inputalertbg);
+}
+
+
+
+div.dialog
+{
+	border: 4px var(--mxs-orange) solid;
+	background-color: #24293C;
+	color: white;
+
+}
+
+div.dialog input,
+div.dialog textarea
+{
+	color: black;
+}
+
+table.datatable td.code
+{
+	color: rgba(0,0,0,1);
+}
+
+div#priceselector.widget
+{
+	background-color: #24293C; 
+	border: 4px solid var(--mxs-orange); 
+}
+
+/* Jquery Theme */
+
+option
+{
+	background-color: #FDFDFF;;
+}
+
+/* Component containers
+----------------------------------*/
+.ui-widget.ui-widget-content {
+	border: 1px solid #c5c5c5;
+}
+
+.ui-widget-content {
+	border: 1px solid #dddddd;
+	background: #ffffff;
+	color: #333333;
+}
+.ui-widget-content a {
+	color: #333333;
+}
+.ui-widget-header {
+	border: 1px solid #dddddd;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #333333;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+
+/* We use html here because we need a greater specificity to make sure disabled
+works properly when clicked or hovered */
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+	border: 1px solid #c5c5c5;
+	background: #f6f6f6;
+	font-weight: normal;
+	color: #454545;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+a.ui-button,
+a:link.ui-button,
+a:visited.ui-button,
+.ui-button {
+	color: #454545;
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus {
+	border: 1px solid #cccccc;
+	background: #ededed;
+	font-weight: normal;
+	color: #2b2b2b;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus {
+	color: #2b2b2b;
+	text-decoration: none;
+}
+
+.ui-visual-focus {
+	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+	border: 1px solid #003eff;
+	background: #007fff;
+	font-weight: normal;
+	color: #ffffff;
+}
+.ui-icon-background,
+.ui-state-active .ui-icon-background {
+	border: #003eff;
+	background-color: #ffffff;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+	border: 1px solid #dad55e;
+	background: #fffa90;
+	color: #777620;
+}
+.ui-state-checked {
+	border: 1px solid #dad55e;
+	background: #fffa90;
+}
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+	color: #777620;
+}
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+	border: 1px solid #f1a899;
+	background: #fddfdf;
+	color: #5f3f3f;
+}
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+	color: #5f3f3f;
+}
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+	color: #5f3f3f;
+}
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+	font-weight: bold;
+}
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+	opacity: .7;
+	filter:Alpha(Opacity=70); /* support: IE8 */
+	font-weight: normal;
+}
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+	opacity: .35;
+	filter:Alpha(Opacity=35); /* support: IE8 */
+	background-image: none;
+}
+.ui-state-disabled .ui-icon {
+	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
+}
+
+
+.ui-widget-shadow {
+	-webkit-box-shadow: 0px 0px 5px #666666;
+	box-shadow: 0px 0px 5px #666666;
+}
+
+div.button.green, input.button.green {
+	border-color: 	var(--mxs-green);
+    color: var(--mxs-blue);
+}
+
+div.button, input.button,
+div.switcher {
+	border-color: 	var(--mxs-blue);
+	color: var(--mxs-blue);
+}
+
+div.button:hover, input.button:hover,
+div.switcher:hover {
+	border-color: var(--mxs-darkblue);	
+}
+
+div.button.active, input.button.active,
+div.switcher.active {
+
+	border-color: 	var(--mxs-orange);
+	color: var(--mxs-orange);
+}
+
+
+
+
+ div.accordion .ui-accordion-header.ui-state-active {
+    color: var(--mxs-switch-on);
+    border-bottom-color: var(--mxs-switch-on);
+}
+
+
+div.accordion .ui-accordion-header {
+    border-bottom-color: var(--mxs-lightgray);
+	color: var(--mxs-darkgray);
+}
+
+.ui-tabs .ui-tabs-nav .ui-state-default a {
+   border-bottom-color: var(--mxs-lightgray);
+   color: var(--mxs-darkgray);
+}
+
+.ui-tabs .ui-tabs-nav .ui-state-active a {
+    color: var(--mxs-switch-on);
+    border-color: var(--mxs-switch-on);
+}
+
