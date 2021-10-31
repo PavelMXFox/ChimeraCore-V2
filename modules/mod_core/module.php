@@ -31,6 +31,23 @@ class mod_core extends baseModule
                     "function"=>"modules",
                     "page_key"=>"modules",
                 ],
+                [
+                    "title"=>"Пользователи",
+                    "function"=>"users",
+                    "page_key"=>"users",
+                ],
+                [
+                    "title"=>"Группы",
+                    "function"=>"groups",
+                    "page_key"=>"groups",
+                ],
+
+                [
+                    "title"=>"Mail Accounts",
+                    "function"=>"mail",
+                    "page_key"=>"mail",
+                ],
+                
             ]
 		    
 		],

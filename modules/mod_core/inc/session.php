@@ -27,9 +27,9 @@ class session
    	}
    }
    
-   public function checkAccess($rule,$module="all")
+   public function checkAccess($rule,$module="all", $strict=false)
    {
- 		return auth::checkAccess($rule,$module, $this->auth->userRights);
+ 		return auth::checkAccess($rule,$module, $this->auth->userRights,$strict);
    }
    
    public function doAuth($authId, $authSecret=null, $authMethod=null,&$sql=null)

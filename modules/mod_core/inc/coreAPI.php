@@ -1,5 +1,6 @@
 <?php
-require_once 'auth.php';
+/*
+ * require_once 'auth.php';
 require_once 'baseModule.php';
 require_once 'baseModule_Auth.php';
 require_once 'baseModule_Logger.php';
@@ -43,6 +44,7 @@ require_once 'APIToken.php';
 require_once 'APIPacket.php';
 require_once 'APIMessage.php';
 require_once 'notifier.php';
+*/
 require_once 'Autoloader.php';
 
 # API v2 back-compatibility

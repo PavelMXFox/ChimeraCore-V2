@@ -255,7 +255,9 @@ E-Mail: <span style='color: #ff6f0f'>".$payload["eMail"]."</span><br/>
             $msg->mailFrom=fox\config::get("infoEMail");
             $msg->send();
             
-            $atx->delete();
+            if (!empty($atx)) {
+                $atx->delete();
+            }
             print json_encode(["status"=>"OK", "message"=>""]);
             
             

@@ -129,6 +129,7 @@ class common {
     }
     
     static function clearInput($val, $regex="") {
+        if (empty($regex)) { $regex = "[0-9a-zA-Z_.@-]"; }
         return preg_replace('![^'.$regex.']+!', '', $val);
     }
 

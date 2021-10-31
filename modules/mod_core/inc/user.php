@@ -25,7 +25,6 @@ require_once "coreAPI.php";
  * @property mixed $companyId
  * @property mixed $eMail
  * @property boolean $isRegistered
- * @property boolean $isConfirmed
  *
  *
  **/
@@ -94,16 +93,19 @@ class user extends baseClass
 	    if (empty($sql)) {$sql = new sql();}
 	    $sqlQueryString="SELECT `u`.* FROM `tblUsers`  as `u`
         $ruleJoin
-        where (`u`.`companyId` is NULL OR `u`.`companyId` = '$companyId')
-            AND `u`.`active` = 1
-            AND `u`.`deleted` = 0
-            AND (`u`.`invCode` = '".UID::clear($pattern)."'
-	        OR `u`.`login` like '%$pattern%'
-	        OR `u`.`fullName` like '%$pattern%')
+        where 
+".($companyId===null?"":"(`u`.`companyId` is NULL OR `u`.`companyId` = '$companyId') AND )")."
+`u`.`active` = 1
+AND `u`.`deleted` = 0
+AND (`u`.`invCode` = '".UID::clear($pattern)."'
+OR `u`.`login` like '%$pattern%'
+OR `u`.`fullName` like '%$pattern%')
         $ruleWhere
         group by `u`.`id` limit $limit"; 
 	    
         $rv = [];
+       
+        
         $res = $sql->quickExec($sqlQueryString);
         while ($row = mysqli_fetch_assoc($res)) {
             array_push($rv, new self($row));

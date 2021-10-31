@@ -77,9 +77,9 @@ class auth
 	    $className="mod_".$authModule;
 	    return class_exists($className) && $className::preCheckChangePassword($user);
 	}
-	static public function checkAccess($rule, $module="all", &$rights)
+	static public function checkAccess($rule, $module="all", &$rights, $strict=false)
    {
-		if (array_key_exists("all", $rights) &&  array_key_exists("isRoot", $rights["all"])) 
+		if ($strict==false && array_key_exists("all", $rights) &&  array_key_exists("isRoot", $rights["all"])) 
 		{
 			return true;
 		} 

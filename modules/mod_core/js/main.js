@@ -465,7 +465,7 @@ function dialogField_add(title, item, blockstyle, fieldstyle, type, args, onChan
     			if (args.mask === undefined) { args.mask=true; }
     			
     			item_id=item;
-    			item=$("<input>", {class: "i", id: item_id, name: name+"_1"});
+    			item=$("<input>", {class: "i", id: item_id, name: name});
     			
     			item.datetimepicker(args);
     			item.val(args.curr);
@@ -505,22 +505,78 @@ function breadcrumbsUpdateSuffix(text) {
 }
 
 
-function collectForm(formid, getall)
+function collectForm(formid, getall, withIDS, withREF, validate)
 {
+	
 	// создадим пустой объект
 	var data = {};
 	var ctr=0;
 	var cctr=0;
+	var cerr=0;
 	$('#'+formid+' .i'+((getall==true)?"":'.changed')).each(function() {
 	  if (isset(this.name)) {key = this.name} else {key = this.id}
- 	  if (getall) { data[key] = {val: $(this).val(), changed: $(this).hasClass("changed")}; }
-		else { data[key] = $(this).val(); }
+ 	  if (getall) { 
+		
+		var reqx="false";
+		var regx=".*";
+		var rext="false";
+		var px = $(this).closest('.crm_entity_field_block');
+		if (px.length == 1) {
+			if ($(px[0]).attr("regx") !== undefined) { regx = $(px[0]).attr("regx"); }
+			if ($(px[0]).attr("reqx") !== undefined) { reqx = $(px[0]).attr("reqx"); }
+			if ($(px[0]).attr("rext") !== undefined) { rext = $(px[0]).attr("rext"); }
+		}
+		data[key] = {val: $(this).val(), changed: $(this).hasClass("changed")};
+		} else { data[key] = $(this).val(); }
+		
+		if (withIDS==true) {
+			data[key].id=$(this).prop("id");
+			data[key].regx=regx;
+			data[key].reqx=reqx;
+		}
+		
+		data[key].rext=rext;
+
+		if (withREF==true) {
+			data[key].refx=this;
+		}
+
+		if (validate==true) {
+			var reqxOK = reqx!="true" || data[key].val.length>0;
+			var regxOK = data[key].val.length==0 || data[key].val.match(new RegExp(regx, 'g' )) !== null;
+			
+			if (withIDS==true) {
+				data[key].reqxOK = reqxOK;
+				data[key].regxOK = regxOK;
+			}	
+			
+			data[key].valOK = reqxOK && regxOK;
+			
+			if ((reqxOK !== true || regxOK !== true )) {
+				$(this).addClass("alert");
+				var ttlx ="";
+				if (reqxOK !== true) { ttlx += "Обязательное поле. "};
+				if (regxOK !== true) { ttlx += "Несовпадение формата - " + regx};
+				$(this).attr("title",ttlx);
+				cerr++;
+				
+			} else {
+				$(this).removeClass("alert");
+				$(this).attr("title","");
+			}
+		}
+		
 	   if ($(this).hasClass("changed")) { cctr++;}
 	  ctr++;
 	});
 	data["elCount"]=ctr;
 	data["changedCount"]=cctr;
-	data["id"] = id;
+	data["validateErrCount"]=cerr;
+	try {
+		data["id"] = id;
+		} catch {
+			
+		}
 	return data;
 }
 

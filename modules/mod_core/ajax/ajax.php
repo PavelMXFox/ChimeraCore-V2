@@ -1,5 +1,7 @@
 <?php 
 
+use fox\userGroup;
+
 switch ($request->function) {
     case "test":
         //var_dump($_SERVER);
@@ -38,6 +40,43 @@ switch ($request->function) {
     case "ackmydoc":
         global $session;
         print json_encode(["status"=>(fox\legalDoc::qACK($session->auth->user, getVal("id","0-9"))?"OK":"ERR")]);
+        break;
+        
+    case "getusergd":
+        $id = getVal("id","0-9");
+        $u = new fox\user($id);
+        print json_encode(["status"=>"OK","data"=>$u]);
+        break;
+        
+    case "getusergroups":
+        $id = getVal("id","0-9");
+        $u = new fox\user($id);
+        print json_encode(["status"=>"OK","data"=>userGroup::getForUser($u,null)]);
+        break;
+        
+    case "getgroupusers":
+        $id = getVal("id","0-9");
+        $u = new fox\userGroup($id);
+        print json_encode(["status"=>"OK","data"=>$u->getMembers()]);
+        break;
+
+    case "getlistacls":
+        $id = getVal("id","0-9");
+        $u = new fox\userGroup($id);
+        $rv=[];
+        print json_encode(["status"=>"OK","data"=>$u->acl]);
+        break;
+
+    case "getuseracls":
+        $id = getVal("id","0-9");
+        $u = new fox\user($id);
+        $rv=[];
+        foreach (fox\auth::getUserRights($u->id) as $mod=>$rules) {
+            foreach ($rules as $rule) {
+                $rv[] = ["module"=>$mod, "rule"=>$rule];
+            }
+        }
+        print json_encode(["status"=>"OK","data"=>$rv]);
         break;
         
         

@@ -42,6 +42,7 @@ class baseModule
 	public static $sqlTables=[];
 	public static $dependsOn=[];
 	public static $ACLRules=[];
+	public static $configKeys=[];
 	
 	public static $staticData=[];
 	

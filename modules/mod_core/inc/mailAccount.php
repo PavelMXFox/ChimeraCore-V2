@@ -42,6 +42,8 @@ class mailAccount extends baseClass {
     protected $module;
     protected $rxFolder;
     protected $rxArchiveFolder;
+    protected ?bool $default=false;
+    
     
     public static $sqlTable = 'tblMailAccounts';
     
@@ -66,7 +68,7 @@ class mailAccount extends baseClass {
             case "rxPassword": return xcrypt::decrypt($this->password);
             case "rxLogin": return $this->login;
             case "rxPassword": return xcrypt::decrypt($this->password);
-            default: return parent::__get($key);
+            default: return parent::__getDef($key);
         }
     }
     
@@ -119,4 +121,40 @@ class mailAccount extends baseClass {
             return new mailAccount($rv);
         } else {return null;}
     }
+
+    
+    public static function search($pattern,$module=null, $limit=10, &$sql=null) {
+        
+        /*
+         * Ищет группу по шаблону (в полях address).
+         *
+         * Если module отсутствует - то считается, что module ='all' (игнорируется)
+         *
+         */
+        
+        $ruleWhere = '';
+        
+        if ($module !== null) {
+            $ruleWhere = " AND `module` = '$module'";
+        }
+        
+        
+        if (empty($sql)) {$sql = new sql();}
+        $sqlQueryString="SELECT `gr`.* FROM `".static::$sqlTable."`  as `gr`
+        where
+ `gr`.`address` like '%$pattern%'
+        $ruleWhere
+        group by `gr`.`id` limit $limit";
+        
+        $rv = [];
+        
+        
+        $res = $sql->quickExec($sqlQueryString);
+        while ($row = mysqli_fetch_assoc($res)) {
+            array_push($rv, new self($row));
+        }
+        
+        return $rv;
+    }
+    
 }

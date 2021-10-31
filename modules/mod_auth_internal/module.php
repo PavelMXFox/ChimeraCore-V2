@@ -5,26 +5,25 @@ require_once($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/inc/fox_api.php");
 
 class mod_auth_internal extends baseModule_Auth
 {
-	public static $title="Internal auth module";
-	public static $description="Модуль встроенной авторизации";
-	public static $version="2.0.0";
-	
-
-	protected $sql;
-	
-	function __construct($instance=null, &$user=null, &$sql=null)
-   {
-   	if (isset($sql))
-   	{
-		 	$this->sql = $sql;  	
-   	}
-   	
-   	if (isset($user))
-   	{
-			$this->user = $user;   	
-   	}
-   	parent::__construct($instance);
-   }
+    public static $title="Internal auth module";
+    public static $description="Модуль встроенной авторизации";
+    public static $version="2.0.0";
+    
+    protected $sql;
+    
+    function __construct($instance=null, &$user=null, &$sql=null)
+    {
+       	if (isset($sql))
+       	{
+         	$this->sql = $sql;  	
+       	}
+    
+       	if (isset($user))
+       	{
+    		$this->user = $user;   	
+       	}
+       	parent::__construct($instance);
+    }
    	
 	public function install()
 	{
@@ -46,25 +45,28 @@ class mod_auth_internal extends baseModule_Auth
     	$username = preg_replace('![^0-9A-Za-z@\._]+!', '', $authId);
     
     	if ($username == '' || $password == $this->getSecret('')) {
-      	return false;
-	   };
+          	return false;
+        };
 	   
-	   $sqlQueryString = "select `id` as `userId` from `tblUsers` where  `login` = '$username' and `secret` = '$password' and `active`=1 and `deleted` =0 limit 1";
-    
-	   $result = $this->sql->quickExec($sqlQueryString);            
-    	if (!$result) {
-			return false;
-	   }
+        $sqlQueryString = "select `id` as `userId` from `tblUsers` where  `login` = '$username' and `secret` = '$password' and `active`=1 and `deleted` =0 limit 1";
+        
+        $result = $this->sql->quickExec($sqlQueryString);            
+        if (!$result) {
+        	return false;
+        }
                       
-    	if (mysqli_num_rows($result) == 0) {
-			return false;
-	   };
+        if (mysqli_num_rows($result) == 0) {
+        	return false;
+        };
 
     	$userId = mysqli_fetch_assoc($result)["userId"];
+
     	if ($this->user = new fox\user($userId,$sql))
     	{
     	    return $this->user->isRegistered;
-    	} else {return false;}
+    	} else {
+    	    return false;
+    	}
     }	
 	
 	public function checkAuth(&$user=null)
@@ -83,10 +85,13 @@ class mod_auth_internal extends baseModule_Auth
 	
 	public function changePassword(&$user, $password, $sql=null) {
 	    global $coreAPI;
+
 	    if (isset($sql)) {$this->sql = $sql; }
+
 	    if (empty($this->sql)) {
 	        $this->sql = $coreAPI->SQL;
 	    }
+
 	    if (isset($user)) {$this->user = $user; }
 	    if (get_class($this) != "mod_auth_".$this->user->authType) { throw new Exception("Not my user! ".get_class($this)." != "."mod_auth_".$this->user->authType); }
 	    
